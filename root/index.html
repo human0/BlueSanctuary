@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blue Sanctuary BNB</title>
+    <style>
+      /* inline CSS */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      .home {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        float: left;
+        background-color: #fff;
+        box-shadow: 0 0 5px #ccc;
+        transition: box-shadow 0.3s ease;
+      }
+      .home:hover {
+        box-shadow: 0 0 5px #00aaff;
+      }
+      .home h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        color: #333;
+      }
+      .home p {
+        color: #666;
+      }
+      .home img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+      .home a {
+        display: block;
+        background-color: #00aaff;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .home a:hover {
+        background-color: #0088cc;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // jQuery
+      $(document).ready(function() {
+        $('.home').hover(function() {
+          $(this).css('box-shadow', '0 0 5px #00aaff');
+        }, function() {
+          $(this).css('box-shadow', '0 0 5px #ccc');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to Blue Sanctuary BNB</h1>
+    <div class="home">
+      <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+      <h2>Apartment at Gardens, Cape Town</h2>
+      <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
+      <a href="https://airbnb.com/h/bluesanctuarygardens">Book now</a>
+    </div>
+    <div class="home">
+      <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+      <h2>House with a Pool at 35 Fernwood Close, Parklands, Cape Town</h2>
+      <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
+<a href="https://airbnb.com/h/blue-sanctuary">Book now</a>
+    </div>
+  </body>
+</html>
+
