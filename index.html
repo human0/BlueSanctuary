@@ -4,7 +4,9 @@
 	<title>Blue Sanctuary</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- Custom CSS -->
+  <!-- icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
 	<style type="text/css">
 		body {
 			font-family: Arial, sans-serif;
@@ -183,20 +185,20 @@
         <h2 class="text-uppercase">Our homes </h2>
         <div class="home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
-          <h2>Entire Apartment</h2>
+          <h2>St Martini Garden Apartment</h2>
           <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
-          <p><i class="fas fa-map-marker-alt"></i> Gardens, Cape Town</p>
-          <p><i class="fas fa-bed"></i> 1 bedroom</p>
-          <p><i class="fas fa-users"></i> Up to 2 guests</p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i> Gardens, Cape Town</p>
+          <p><i class="fa fa-bed" aria-hidden="true"></i> 1 bedroom</p>
+          <p><i class="fa fa-users" aria-hidden="true"></i> Up to 2 guests</p>
           <a href="https://airbnb.com/h/bluesanctuarygardens">Book now</a>
         </div>
         <div class="home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
           <h2>Entire Pool House</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
-          <p><i class="fas fa-map-marker-alt"></i> Parklands, Cape Town</p>
-          <p><i class="fas fa-bed"></i> 3 bedrooms</p>
-          <p><i class="fas fa-users"></i> Up to 6 guests</p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i> Parklands, Cape Town</p>
+          <p><i class="fa fa-bed" aria-hidden="true"></i> 3 bedrooms</p>
+          <p><i class="fa fa-users" aria-hidden="true"></i> Up to 6 guests</p>
           <a href="https://airbnb.com/h/blue-sanctuary">Book now</a>
         </div>
         <div class="map">
@@ -241,16 +243,34 @@
 
             // Create a marker for the first location
             var marker1 = new google.maps.Marker({
+                title: "Entire Pool House",
                 position: {lat: -33.736033521997754, lng: 18.521339659176753},
-                map: map,
-                title: 'Location 1'
+                map: map
             });
 
             // Create a marker for the second location
             var marker2 = new google.maps.Marker({
+                title: "St Martini Garden Apartment",
                 position: {lat: -33.92676629882478, lng: 18.415170054791638},
-                map: map,
-                title: 'Location 2'
+                map: map
+            });
+            
+            // Add info window to display the titles when the markers are clicked
+            var infoWindow1 = new google.maps.InfoWindow({
+                content: marker1.title
+            });
+
+            var infoWindow2 = new google.maps.InfoWindow({
+                content: marker2.title
+            });
+
+            // Add a click event listener to each marker to open its info window
+            marker1.addListener('click', function() {
+                infoWindow1.open(map, marker1);
+            });
+
+            marker2.addListener('click', function() {
+                infoWindow2.open(map, marker2);
             });
         }
     </script>
