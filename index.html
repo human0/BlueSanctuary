@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Blue Sanctuary BNB</title>
-    <style>
-      /* inline CSS */
+<head>
+	<title>Blue Sanctuary</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.section {
+			padding: 50px 0;
+			text-align: center;
+		}
+
+		.section p {
+			font-size: 18px;
+			line-height: 1.5;
+			margin: 20px 0;
+		}
+
+		.section h2 {
+      color: #aaa;
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+	     /* Set the height of the map to 400 pixels */
+       .section {
+  display: block;
+  margin-bottom: 20px; /* add some margin to separate the sections */
+}
+.clear {
+  clear: both;
+}
+      #map {
+          height: 400px;
+          display: block;
+      }
       body {
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
@@ -50,6 +87,24 @@
       .home a:hover {
         background-color: #0088cc;
       }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+      }
+      .nav li a, .navbar-brand {
+        color: #3e7591 !important;
+      }
+
+      .nav li a:hover, .navbar-brand:hover {
+        color: #00aaff !important;
+      }
+      .row {
+          text-align: center;
+          display: inline-block
+      }
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -61,22 +116,150 @@
           $(this).css('box-shadow', '0 0 5px #ccc');
         });
       });
+
+      $(document).ready(function() {
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+      });
+
     </script>
-  </head>
-  <body>
-    <h1>Welcome to Blue Sanctuary BNB</h1>
-    <div class="home">
-      <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
-      <h2>Apartment at Gardens, Cape Town</h2>
-      <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
-      <a href="https://airbnb.com/h/bluesanctuarygardens">Book now</a>
+</head>
+<body>
+	<!-- Navigation bar -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Blue Sanctuary</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#about-us">About Us</a></li>
+					<li><a href="#our-homes">Our Homes</a></li>
+					<li><a href="#the-map">The Map</a></li>
+					<li><a href="#contact-us">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- About Us section -->
+	<section id="about-us" class="section">
+		<div class="container">
+			<h2 class="text-uppercase">About Us</h2>
+			<p>Welcome to Blue Sanctuary, where rest and safety are our top priority. Our airbnb is designed to provide a serene and tranquil environment for tourists and travelers alike. We understand that your vacation should be a time to unwind and recharge, and we have gone to great lengths to ensure that our space is both welcoming and peaceful. From cozy furnishings to top-of-the-line safety features, we are dedicated to making your stay with us a restful and rejuvenating experience. So come and make yourself at home at Blue Sanctuary, your safe haven away from home.</p>
+		</div>
+	</section>
+
+  <section id="our-homes" class="section">
+    <div class="container">
+      <div class="row"> 
+        <h2 class="text-uppercase">Our homes </h2>
+        <div class="home mx-auto text-center">
+          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+          <h2>Entire Apartment</h2>
+          <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
+          <p><i class="fas fa-map-marker-alt"></i> Gardens, Cape Town</p>
+          <p><i class="fas fa-bed"></i> 1 bedroom</p>
+          <p><i class="fas fa-users"></i> Up to 2 guests</p>
+          <a href="https://airbnb.com/h/bluesanctuarygardens">Book now</a>
+        </div>
+        <div class="home mx-auto text-center">
+          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+          <h2>Entire Pool House</h2>
+          <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
+          <p><i class="fas fa-map-marker-alt"></i> Parklands, Cape Town</p>
+          <p><i class="fas fa-bed"></i> 3 bedrooms</p>
+          <p><i class="fas fa-users"></i> Up to 6 guests</p>
+          <a href="https://airbnb.com/h/blue-sanctuary">Book now</a>
+        </div>
+        <div class="map">
+          <!-- Map code goes here -->
+        </div>
+      </div>
     </div>
-    <div class="home">
-      <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
-      <h2>House with a Pool at 35 Fernwood Close, Parklands, Cape Town</h2>
-      <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
-<a href="https://airbnb.com/h/blue-sanctuary">Book now</a>
-    </div>
+  </section>
+
+	<!-- The Map section -->
+	<section id="the-map" class="section">
+		<div class="container">
+      <div class="Section clear"> 
+        <h2 class="text-uppercase">The map</h2>
+        <div id="map"></div>
+      </div>
+      <!-- Google Maps API goes here -->
+		</div>
+	</section>
+
+	<!-- Contact Us section -->
+	<section id="contact-us" class="section">
+		<div class="container">
+			<h2 class="text-uppercase">Contact Us</h2>
+			<p>Have a question or need more information? Contact us by phone or email.</p>
+			<p>Phone: +27616172532</p>
+			<p>Email: bluesanctuary35@gmail.com</p>
+		</div>
+	</section>
+
+     <!-- Include the Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC5Vxe8-7ZpZZKjQE717vLve2buevS4r8"></script>
+
+    <script>
+        // Initialize the map
+        function initMap() {
+            // Create a new map centered on the first location
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -33.736033521997754, lng: 18.521339659176753},
+                zoom: 10
+            });
+
+            // Create a marker for the first location
+            var marker1 = new google.maps.Marker({
+                position: {lat: -33.736033521997754, lng: 18.521339659176753},
+                map: map,
+                title: 'Location 1'
+            });
+
+            // Create a marker for the second location
+            var marker2 = new google.maps.Marker({
+                position: {lat: -33.92676629882478, lng: 18.415170054791638},
+                map: map,
+                title: 'Location 2'
+            });
+        }
+    </script>
+    
+    <!-- Call the initMap() function when the page has loaded -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC5Vxe8-7ZpZZKjQE717vLve2buevS4r8&callback=initMap">
+    </script>
   </body>
+
 </html>
 
