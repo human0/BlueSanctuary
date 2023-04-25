@@ -12,11 +12,14 @@
 			font-family: Arial, sans-serif;
 			margin: 0;
 			padding: 0;
+      background-image: url("pool.gif");
+      background-repeat: repeat;
 		}
 
 		.section {
 			padding: 50px 0;
 			text-align: center;
+      background-color:rgba(255, 255, 255, 0.8) !important;
 		}
 
 		.section p {
@@ -33,17 +36,18 @@
 		}
 	     /* Set the height of the map to 400 pixels */
        .section {
-  display: block;
-  margin-bottom: 20px; /* add some margin to separate the sections */
-}
-.clear {
-  clear: both;
-}
+        display: block;
+        margin-bottom: 20px; /* add some margin to separate the sections */
+      }
+      .clear {
+        clear: both;
+      }
       #map {
           height: 400px;
           display: block;
       }
       body {
+        margin-top: 100px;
         font-family: Arial, sans-serif;
         background-color: #f2f2f2;
       }
@@ -95,6 +99,16 @@
         width: 100%;
         z-index: 9999;
       }
+      .navbar-default {
+        display: flex;
+        justify-content: center;
+      }
+      .navbar-center {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        float: none;
+      }
       .nav li a, .navbar-brand {
         color: #3e7591 !important;
       }
@@ -130,15 +144,16 @@
 
             // Store hash
             var hash = this.hash;
-
+            var position = ($(hash).offset().top - 100)
+            position = position > 0 ? position : 0;
             // Using jQuery's animate() method to add smooth page scroll
             // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
-              scrollTop: $(hash).offset().top
+              scrollTop: position
             }, 800, function(){
 
               // Add hash (#) to URL when done scrolling (default click behavior)
-              window.location.hash = hash;
+              window.location.hash = hash - 100;
             });
           } // End if
         });
@@ -150,7 +165,7 @@
 	<!-- Navigation bar -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<div class="navbar-header">
+			<div class="navbar-header navbar-center">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -173,10 +188,17 @@
 
 	<!-- About Us section -->
 	<section id="about-us" class="section">
-		<div class="container">
-			<h2 class="text-uppercase">About Us</h2>
-			<p>Welcome to Blue Sanctuary, where rest and safety are our top priority. Our airbnb is designed to provide a serene and tranquil environment for tourists and travelers alike. We understand that your vacation should be a time to unwind and recharge, and we have gone to great lengths to ensure that our space is both welcoming and peaceful. From cozy furnishings to top-of-the-line safety features, we are dedicated to making your stay with us a restful and rejuvenating experience. So come and make yourself at home at Blue Sanctuary, your safe haven away from home.</p>
-		</div>
+    <div class="container">
+      <div class="row">
+        <h2 class="text-uppercase">About Us</h2>
+        <div class="col-sm-2">
+          <img src="safetyIcon.png" class="img-responsive" alt="Safety Icon" width="140px">
+        </div>
+        <div class="col-sm-10 ">
+          <p class="text-left">Welcome to Blue Sanctuary, where rest and safety are our top priority. Our airbnb is designed to provide a serene and tranquil environment for tourists and travelers alike. We understand that your vacation should be a time to unwind and recharge, and we have gone to great lengths to ensure that our space is both welcoming and peaceful. From cozy furnishings to top-of-the-line safety features, we are dedicated to making your stay with us a restful and rejuvenating experience. So come and make yourself at home at Blue Sanctuary, your safe haven away from home.</p>
+        </div>
+      </div>
+    </div>
 	</section>
 
   <section id="our-homes" class="section">
@@ -187,19 +209,19 @@
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
           <h2>St Martini Garden Apartment</h2>
           <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i> Gardens, Cape Town</p>
-          <p><i class="fa fa-bed" aria-hidden="true"></i> 1 bedroom</p>
-          <p><i class="fa fa-users" aria-hidden="true"></i> Up to 2 guests</p>
-          <a href="https://airbnb.com/h/bluesanctuarygardens">Book now</a>
+          <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
+          <p><i class="fa fa-bed"></i> 1 bedroom</p>
+          <p><i class="fa fa-users"></i> Up to 2 guests</p>
+          <a href="https://airbnb.com/h/bluesanctuarygardens">Book on AirBnb</a>
         </div>
         <div class="home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
           <h2>Entire Pool House</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i> Parklands, Cape Town</p>
-          <p><i class="fa fa-bed" aria-hidden="true"></i> 3 bedrooms</p>
-          <p><i class="fa fa-users" aria-hidden="true"></i> Up to 6 guests</p>
-          <a href="https://airbnb.com/h/blue-sanctuary">Book now</a>
+          <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
+          <p><i class="fa fa-bed"></i> 3 bedrooms</p>
+          <p><i class="fa fa-users"></i> Up to 6 guests</p>
+          <a href="https://airbnb.com/h/blue-sanctuary">Book on AirBnb</a>
         </div>
         <div class="map">
           <!-- Map code goes here -->
