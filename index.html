@@ -22,6 +22,10 @@
       background-color:rgba(255, 255, 255, 0.8) !important;
 		}
 
+    .section img {
+      opacity: 0.9;
+    }
+
 		.section p {
 			font-size: 18px;
 			line-height: 1.5;
@@ -78,6 +82,12 @@
         object-fit: cover;
         margin-bottom: 10px;
       }
+      .icon {
+        width: 15px !important;
+        height: auto !important;
+        object-fit:fill !important;
+        margin-bottom: 5px !important;
+      }
       .home a {
         display: block;
         background-color: #00aaff;
@@ -92,7 +102,7 @@
       .home a:hover {
         background-color: #0088cc;
       }
-      .navbar {
+      #navbar {
         position: fixed;
         top: 0;
         width: 100%;
@@ -108,8 +118,12 @@
         margin: 0 auto;
         float: none;
       }
-      .nav li a, .navbar-brand {
-        color: #3e7591 !important;
+      .nav li a {
+        color: #666 !important;
+      }
+      
+      .navbar-brand {
+        color: #999 !important;
       }
 
       .nav li a:hover, .navbar-brand:hover {
@@ -183,7 +197,7 @@
 </head>
 <body>
 	<!-- Navigation bar -->
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" id="navbar">
 		<div class="container-fluid">
 			<div class="navbar-header navbar-center">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -229,7 +243,7 @@
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <a href="https://airbnb.com/h/bluesanctuarygardens">AirBnb</a>
+          <a href="https://airbnb.com/h/bluesanctuarygardens"><img class="icon" src="airbnb.png" height="5px"/> &nbsp; AirBnb</a>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
@@ -238,7 +252,7 @@
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
-          <a href="https://airbnb.com/h/blue-sanctuary">AirBnb</a>
+          <a href="https://airbnb.com/h/blue-sanctuary"><img class="icon" src="airbnb.png" height="5px"/> &nbsp; AirBnb</a>
         </div>
         <div class="map">
           <!-- Map code goes here -->
@@ -303,7 +317,7 @@
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-paper-plane"></i> Send</button>
-                  <p>OR email support@bluesanctuary.co.za</p>
+                  <p>support@bluesanctuary.co.za</p>
                 </div>
 
               </form>
@@ -325,7 +339,7 @@
         function initMap() {
             // Create a new map centered on the first location
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -33.736033521997754, lng: 18.521339659176753},
+                center: {lat: -33.82676629882478, lng: 18.415170054791638},
                 zoom: 10
             });
 
@@ -406,7 +420,20 @@
         });
       });
     </script>
+  <footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+     
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Blue Sanctuary</a>
+      <ul class="nav navbar-nav">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#our-homes">Our Homes</a></li>
+        <li><a href="#the-map">The Map</a></li>
+        <li><a href="#contact-us">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
   </body>
-
 </html>
 
