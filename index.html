@@ -3,7 +3,7 @@
 <head>
 	<title>Blue Sanctuary</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <!-- icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Custom CSS -->
@@ -129,7 +129,7 @@
       .nav li a:hover, .navbar-brand:hover {
         color: #00aaff !important;
       }
-      .row {
+      #our-homes .row {
           text-align: center;
           display: inline-block
       }
@@ -155,8 +155,24 @@
       .alert {
         margin-top: 20px;
       }
+      
+      .modal-dialog {
+        margin-top: 200px;
+      }
+      .greyColor {
+        color: #666 !important;
+      }
+      .lightGreyColor {
+        color: #999 !important;
+      }
+      .greenColor{
+        color: #696;
+      }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Include the Yoco SDK in your web page -->
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script>
       // jQuery
       $(document).ready(function() {
@@ -243,16 +259,21 @@
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <a href="https://airbnb.com/h/bluesanctuarygardens">            <img class="icon" src="airbnb.png"/> 
+          <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
+
+          <a href="https://airbnb.com/h/bluesanctuarygardens">
+            <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
           </a>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+          <h2>x3 Room Pool house</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
+          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool house">Reserve now</button>
           <a href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
             <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
@@ -349,7 +370,7 @@
 
             // Create a marker for the first location
             var marker1 = new google.maps.Marker({
-                title: "Entire Pool House",
+                title: "x3 Room Pool house",
                 position: {lat: -33.736033521997754, lng: 18.521339659176753},
                 map: map
             });
@@ -390,6 +411,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function() {
+        // Get the current date
+        const today = new Date();
+
+        // Add one day to the current date
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+
+        // Format the date as YYYY-MM-DD for the input value
+        const year = tomorrow.getFullYear();
+        const month = (tomorrow.getMonth() + 1).toString().padStart(2, "0");
+        const day = tomorrow.getDate().toString().padStart(2, "0");
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Set the value of the date input to the next day's date
+        $("#dateInput").val(formattedDate);
+        $("#dateInput").attr("min", formattedDate);
+      });
+
+      $(document).ready(function() {
+
+        $('#modal-form').submit(function(e) {
+          e.preventDefault();
+          saveChanges()
+        });
+
         $('#contact-form').submit(function(e) {
           e.preventDefault();
           var name = $('#name').val();
@@ -437,6 +483,166 @@
     </nav>
   </div>
 </footer>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title text-center" id="modalTitle">Reservations Details</h5>
+        <h4 class="text-center greenColor currency-header" id="displayPrice">-</h4>
+      </div>
+
+      <div class="modal-body">
+        <form id="modal-form">
+          <div class="form-group" disabled="true" hidden="true" aria-hidden="true">
+            <label for="nameInput" disabled="true">Name</label>
+            <input type="text" class="form-control" id="nameInput">
+          </div>
+          <div class="row">
+            <h5 class="text-center lightGreyColor">Reservation details</h5> 
+            <hr>
+            <div class="form-group col-md-3" disabled="true" hidden="true" aria-hidden="true">
+              <label for="roomsInput">Rooms</label>
+              <input type="number" class="form-control" id="roomsInput" min="1" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="guestsInput">Guests</label>
+              <input type="number" class="form-control" id="guestsInput" min="1" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="nightsInput">Nights</label>
+              <input type="number" class="form-control" id="nightsInput" min="1" value="1" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dateInput">Checkin (prefered)</label>
+              <input type="date" class="form-control" id="dateInput" required>
+            </div>
+          </div>
+          <div class="row">
+            <hr>
+            <h5 class="text-center lightGreyColor">Card holder details</h5> 
+            <hr>
+            <div class="form-group col-md-6">
+              <label for="customerName">Name</label>
+              <input type="text" class="form-control" id="customerNameInput" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="customerSurname">Surname</label>
+              <input type="text" class="form-control" id="customerSurnameInput" required>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="customerEmail">Email</label>
+              <input type="email" class="form-control" id="customerEmailInput" required>
+            </div>
+         </div>
+         <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="">Card payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var yoco = new window.YocoSDK({
+    publicKey: 'pk_live_0996b0ab6604zGJ170f4',
+  });
+
+  function showPaymentPopup() {
+    var name = document.getElementById("nameInput").value;
+    var clientName = document.getElementById("customerNameInput").value;
+    var clientSurname = document.getElementById("customerSurnameInput").value;
+    var clientEmail = document.getElementById("customerEmailInput").value;
+    var numRooms = document.getElementById("roomsInput").value;
+    var numGuests = document.getElementById("guestsInput").value;
+    var numNights = document.getElementById("nightsInput").value;
+
+    var basePrice = 300;
+    var cleaning = 300;
+    var guestPrice = 500;
+
+    var paymentRequest = {
+      amountInCents: price() * 100,
+      currency: "ZAR",
+      name: name,
+      description: "Payment for " + numNights + " nights at " + name,
+      metadata: {
+        rooms: numRooms,
+        guests: numGuests,
+        nights: numNights,
+        customer: {
+          firstName: clientName,
+          surname: clientSurname,
+          email: clientEmail,
+        }
+      },
+      callback: function(response) {
+        console.log(response);
+        // handle payment response here
+      }
+    };
+
+    yoco.showPopup(paymentRequest);
+  }
+
+  // Set form values when modal is opened
+  $('#myModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var maxRooms = button.data('max-rooms'); // Extract info from data-* attributes
+    var maxPeople = button.data('max-people')
+    var name = button.data('name');
+
+    // Set form field values and attributes
+    $('#nameInput').val(name);
+    $('#roomsInput').val(maxRooms);
+    $('#roomsInput').attr('max', maxRooms);
+    $('#guestsInput').val(maxPeople);
+    $('#guestsInput').attr('max', maxPeople);
+    $('#modalTitle').text(name);
+    $("#displayPrice").text(formatedPrice());
+  });
+
+  // Reset form fields when modal is closed
+  $('#myModal').on('hidden.bs.modal', function () {
+    $('#nameInput').val('');
+    $('#roomsInput').val('');
+    $('#guestsInput').val('');
+    $('#modalTitle').text('');
+  });
+
+  // Handle form data and close modal
+  function saveChanges() {
+    var name = $('#nameInput').val();
+    var maxRooms = $('#roomsInput').val();
+    var maxPeople = $('#guestsInput').val();
+
+    $('#myModal').modal('hide');
+    showPaymentPopup();
+  }
+
+  function price() {
+    //var numRooms = document.getElementById("roomsInput").value;
+    var numGuests = document.getElementById("guestsInput").value;
+    var numNights = document.getElementById("nightsInput").value;
+
+    var basePrice = 300;
+    var cleaning = 300;
+    var guestPrice = 500;
+
+    return (basePrice + (numGuests * guestPrice) + cleaning) * numNights
+  }
+
+  function formatedPrice() {
+    return Number(price()).toLocaleString('en-US', { style: 'currency', currency: 'ZAR' });
+  }
+
+  $('#modal-form').change(function() {
+    $("#displayPrice").text(formatedPrice());
+  });
+  
+</script>
   </body>
 </html>
 
