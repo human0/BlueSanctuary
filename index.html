@@ -88,19 +88,8 @@
         object-fit:fill !important;
         margin-bottom: 5px !important;
       }
-      .home a {
-        display: block;
-        background-color: #00aaff;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-      }
-      .home a:hover {
-        background-color: #0088cc;
+      .home button.transparent{
+        opacity: 0.7;
       }
       #navbar {
         position: fixed;
@@ -167,6 +156,26 @@
       }
       .greenColor{
         color: #696;
+      }
+      #termsModal .modal-body {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      #termsModal {
+        color: #666666;
+      }
+      #termsModal ol {
+        counter-reset: item;
+      }
+      #termsModal li {
+        display: block;
+      }
+      #termsModal li:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+      }
+      #termsModal b {
+        font-size: 16px;
       }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -260,24 +269,31 @@
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
           <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
-
-          <a href="https://airbnb.com/h/bluesanctuarygardens">
+          <button class="btn btn-warning btn-sm col-md-6 transparent btn-block" href="https://airbnb.com/h/bluesanctuarygardens">
             <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
-          </a>
+          </button>
+          <button class="btn-primary btn-sm col-md-6 transparent btn-block" href="https://www.booking.com/hotel/za/flat-in-gardens-mountain-view">
+            <img class="icon" src="booking.png"/> 
+            &nbsp; Booking.com &nbsp;
+          </button>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
-          <h2>x3 Room Pool house</h2>
+          <h2>x3 Room Pool House</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
-          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool house">Reserve now</button>
-          <a href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
+          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool House">Reserve now</button>
+          <button type="button" class="btn btn-warning btn-sm transparent btn-block" href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
             <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
-          </a>
+          </button>
+          <button class="btn-primary btn-sm transparent btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb" class="d-flex">
+            <img class="icon" src="booking.png"/> 
+            &nbsp; Booking.com &nbsp;
+          </button>
         </div>
         <div class="map">
           <!-- Map code goes here -->
@@ -370,7 +386,7 @@
 
             // Create a marker for the first location
             var marker1 = new google.maps.Marker({
-                title: "x3 Room Pool house",
+                title: "x3 Room Pool House",
                 position: {lat: -33.736033521997754, lng: 18.521339659176753},
                 map: map
             });
@@ -492,7 +508,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title text-center" id="modalTitle">Reservations Details</h5>
+        <h5  class="modal-title text-center" id="modalTitle">name</h5>
         <h4 class="text-center greenColor currency-header" id="displayPrice">-</h4>
       </div>
 
@@ -511,7 +527,7 @@
             </div>
             <div class="form-group col-md-4">
               <label for="guestsInput">Guests</label>
-              <input type="number" class="form-control" id="guestsInput" min="1" required>
+              <input type="number" class="form-control" id="guestsInput" min="1" value="1" required>
             </div>
             <div class="form-group col-md-4">
               <label for="nightsInput">Nights</label>
@@ -539,8 +555,16 @@
               <input type="email" class="form-control" id="customerEmailInput" required>
             </div>
          </div>
-         <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="">Card payment</button>
-        </form>
+         <div class="form-check text-center">
+          <input class="form-check-input" type="checkbox" id="termsCheck" required>
+          <label class="form-check-label" for="termsCheck">
+            I have read and agree to the <a href="#termsModal" data-toggle="modal">terms and conditions</a>.
+          </label>
+        </div>
+        <div class="form-check">
+           <button type="submit" class="btn btn-primary btn-md btn-block" id="submitDetails">Card payment</button>
+        </div>
+      </form>
       </div>
     </div>
   </div>
@@ -643,6 +667,128 @@
   });
   
 </script>
+<script>
+  $(document).ready(function() {
+  // Get a reference to the checkbox input and submit button
+  var $checkbox = $('#termsCheck');
+  var $submitBtn = $('#submitDetails');
+  
+  // Set the initial state of the submit button
+  $submitBtn.prop('disabled', !$checkbox.prop('checked'));
+  
+  // Add an event listener to the checkbox input
+  $checkbox.on('change', function() {
+    // Toggle the disabled state of the submit button based on the checkbox value
+    $submitBtn.prop('disabled', !$checkbox.prop('checked'));
+  });
+});
+</script>
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="termsModalLabel">Terms and Conditions</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for choosing to stay at Blue Sanctuary BNB. We strive to provide you with a comfortable and safe experience during your stay. Please carefully read our terms and conditions, which apply to all reservations made through our website and other third-party booking platforms.</p>
+
+        <ol>
+          <li>
+            <b>Reservations:</b>
+            <ol>
+              <li>Guests may reserve your BnBs on booking.com, Airbnb, or your website.</li>
+              <li>Guests who book on your website must provide a preferred check-in date.</li>
+              <li>If the preferred date is not available, we will attempt to transfer the guest to another BnB or update their reservation to a future date.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Refund Policy:</b>
+            <ol>
+              <li>Your website operates on Airbnb's Flexible Rebooking and Strict Refund Policy.</li>
+              <li>If a guest must be refunded due to unforeseen circumstances, the refund will be processed within 7 working days of its approval.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Assistance:</b>
+            <ol>
+              <li>Your website offers focused assistance to help Blue Sanctuary guests find and reserve their next stay at a Blue Sanctuary BnB.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Liability:</b>
+            <ol>
+              <li>Blue Sanctuary BnB is an informal business.</li>
+              <li>While we take cleaning and safety seriously and have private, secure accommodations, we cannot be held liable for any loss, damages, or injury suffered by guests or their property during their stay.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Compliance:</b>
+            <ol>
+              <li>We do our best to comply with BnB laws and regulations in South Africa.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Payment and Cancellation Policies:</b>
+            <ol>
+              <li>Guests will be charged based on the booking platform they used to reserve their stay.</li>
+              <li>Please refer to the respective platform's payment and cancellation policies for more information.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Check-in and Check-out Times:</b>
+            <ol>
+              <li>Please note the check-in and check-out times on the booking platform you used to reserve your stay.</li>
+              <li>If you booked on our website, we will confirm the check-in time based on your preferred check-in date.</li>
+            </ol>
+          </li>
+          <li>
+            <b>House Rules:</b>
+            <ol>
+              <li>Please be respectful of other guests and our neighbors during your stay.</li>
+              <li>Smoking is not allowed inside any of our BnBs, and pets are not permitted.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Security Deposit:</b>
+            <ol>
+              <li>We require a security deposit to ensure that our properties are well taken care of during your stay.</li>
+              <li>The amount of the security deposit will vary based on the BnB you reserve.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Maintenance and Repairs:</b>
+            <ol>
+              <li>If you notice any issues with your BnB during your stay, please let us know so we can take care of it right away.</li>
+              <li>We will cover the cost of any repairs that are our responsibility.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Privacy Policy:</b>
+            <ol>
+              <li>Your privacy is important to us.</li>
+              <li>We will only collect the information we need to make your stay comfortable, and we will never share your information with anyone else.</li>
+            </ol>
+          </li>
+          <li>
+            <b>Termination and Cancellation:</b>
+          <ol>
+            <li>We reserve the right to terminate or cancel a guest's reservation if they violate our house rules or fail to comply with our policies.</li>
+            <li>If we need to cancel a reservation, we will notify the guest as soon as possible and refund any payment that has already been made.</li>
+          </ol>
+        </li>
+      </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   </body>
 </html>
 
