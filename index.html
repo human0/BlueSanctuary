@@ -564,8 +564,10 @@
   </div>
 </div>
 <script>
-  var yoco = new window.YocoSDK({
-    publicKey: 'pk_live_0996b0ab6604zGJ170f4',
+  window.addEventListener('load', function() {
+    var yoco = new window.YocoSDK({
+      publicKey: 'pk_live_0996b0ab6604zGJ170f4',
+    });
   });
 
   function showPaymentPopup() {
