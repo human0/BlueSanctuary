@@ -88,9 +88,6 @@
         object-fit:fill !important;
         margin-bottom: 5px !important;
       }
-      .home a.transparent{
-        transform: scale(0.95);
-      }
       #navbar {
         position: fixed;
         top: 0;
@@ -177,11 +174,15 @@
       #termsModal b {
         font-size: 16px;
       }
+      .push-right {
+        float: right;
+      }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Include the Yoco SDK in your web page -->
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <!-- Include the Google Maps JavaScript API -->
     <script>
       // jQuery
       $(document).ready(function() {
@@ -269,13 +270,15 @@
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
           <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
-          <a class="btn btn-warning btn-sm transparent btn-block" href="https://airbnb.com/h/bluesanctuarygardens">
+          <a class="btn-warning btn-sm btn-block" href="https://airbnb.com/h/bluesanctuarygardens">
             <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
+            <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
-          <a class="btn-primary btn-sm col-md-6 transparent btn-block" href="https://www.booking.com/hotel/za/flat-in-gardens-mountain-view">
+          <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/flat-in-gardens-mountain-view">
             <img class="icon" src="booking.png"/> 
             &nbsp; Booking.com &nbsp;
+            <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
@@ -286,13 +289,15 @@
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
           <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool House">Reserve now</button>
-          <a type="button" class="btn btn-warning btn-sm transparent btn-block" href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
+          <a class="btn-warning btn-sm btn-block" href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
             <img class="icon" src="airbnb.png"/> 
             &nbsp; AirBnb &nbsp;
+            <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
-          <a class="btn-primary btn-sm transparent btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb" class="d-flex">
+          <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb" class="d-flex">
             <img class="icon" src="booking.png"/> 
             &nbsp; Booking.com &nbsp;
+            <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
         </div>
         <div class="map">
@@ -309,7 +314,6 @@
         <h2 class="text-uppercase">The map</h2>
         <div id="map"></div>
       </div>
-      <!-- Google Maps API goes here -->
 		</div>
 	</section>
 
@@ -371,10 +375,6 @@
       </div>
     </div>
 	</section>
-
-     <!-- Include the Google Maps JavaScript API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC5Vxe8-7ZpZZKjQE717vLve2buevS4r8"></script>
-
     <script>
         // Initialize the map
         function initMap() {
@@ -417,13 +417,10 @@
             });
         }
     </script>
-    
-    <!-- Call the initMap() function when the page has loaded -->
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC5Vxe8-7ZpZZKjQE717vLve2buevS4r8&callback=initMap">
-    </script>
-
-
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC5Vxe8-7ZpZZKjQE717vLve2buevS4r8&callback=initMap">
+    </script> 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function() {
@@ -525,15 +522,15 @@
               <label for="roomsInput">Rooms</label>
               <input type="number" class="form-control" id="roomsInput" min="1" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-sm-4">
               <label for="guestsInput">Guests</label>
               <input type="number" class="form-control" id="guestsInput" min="1" value="1" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-sm-4">
               <label for="nightsInput">Nights</label>
               <input type="number" class="form-control" id="nightsInput" min="1" value="1" required>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-sm-4">
               <label for="dateInput">Checkin (prefered)</label>
               <input type="date" class="form-control" id="dateInput" required>
             </div>
@@ -542,15 +539,15 @@
             <hr>
             <h5 class="text-center lightGreyColor">Card holder details</h5> 
             <hr>
-            <div class="form-group col-md-6">
+            <div class="form-group col-sm-6">
               <label for="customerName">Name</label>
               <input type="text" class="form-control" id="customerNameInput" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-sm-6">
               <label for="customerSurname">Surname</label>
               <input type="text" class="form-control" id="customerSurnameInput" required>
             </div>
-            <div class="form-group col-md-12">
+            <div class="form-group col-sm-12">
               <label for="customerEmail">Email</label>
               <input type="email" class="form-control" id="customerEmailInput" required>
             </div>
@@ -562,7 +559,7 @@
           </label>
         </div>
         <div class="form-check">
-           <button type="submit" class="btn btn-primary btn-md btn-block" id="submitDetails">Card payment</button>
+           <button type="submit" class="btn btn-primary btn-sm btn-block" id="submitDetails">Card payment</button>
         </div>
       </form>
       </div>
