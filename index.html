@@ -177,8 +177,7 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Include the Yoco SDK in your web page -->
-    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+
     <!-- Include the Google Maps JavaScript API -->
     <script>
       // jQuery
@@ -564,11 +563,19 @@
   </div>
 </div>
 <script>
-  window.addEventListener('load', function() {
+function loadYocoSDK(callback) {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.src = 'https://js.yoco.com/sdk/v1/yoco-sdk-web.js';
+  script.onload = callback;
+  document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+loadYocoSDK(function() {
     var yoco = new window.YocoSDK({
       publicKey: 'pk_live_0996b0ab6604zGJ170f4',
     });
-  });
 
   function showPaymentPopup() {
     var name = document.getElementById("nameInput").value;
@@ -606,6 +613,10 @@
 
     yoco.showPopup(paymentRequest);
   }
+});
+
+var event = new Event('yocoSdkReady');
+document.dispatchEvent(event);
 
   // Set form values when modal is opened
   $('#myModal').on('show.bs.modal', function (event) {
