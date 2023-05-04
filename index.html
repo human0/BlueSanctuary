@@ -265,7 +265,7 @@
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
+          <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
           <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/flat-in-gardens-mountain-view">
             <img class="icon" src="booking.png"/> 
             &nbsp; Booking.com &nbsp;
@@ -284,7 +284,7 @@
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
-          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool House">Reserve now</button>
+          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-base-price="1200" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool House">Reserve now</button>
           <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb" class="d-flex">
             <img class="icon" src="booking.png"/> 
             &nbsp; Booking.com &nbsp;
@@ -502,7 +502,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <h5  class="modal-title text-center" id="modalTitle">name</h5>
-        <h4 class="text-center greenColor currency-header" id="displayPrice">-</h4>
+        <h4 class="text-center greenColor" id="displayPrice"></h4>
       </div>
 
       <div class="modal-body">
@@ -555,7 +555,7 @@
           </label>
         </div>
         <div class="form-check">
-           <button type="submit" class="btn btn-primary btn-sm btn-block" id="submitDetails">Card payment</button>
+           <button type="submit" class="btn btn-lg btn-success btn-block" id="submitDetails">Card payment</button>
         </div>
       </form>
       </div>
@@ -618,18 +618,21 @@ loadYocoSDK(function() {
 var event = new Event('yocoSdkReady');
 document.dispatchEvent(event);
 
+  var basePrice = 1000;
+
   // Set form values when modal is opened
   $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var maxRooms = button.data('max-rooms'); // Extract info from data-* attributes
     var maxPeople = button.data('max-people')
     var name = button.data('name');
+    basePrice = button.data('base-price')
 
     // Set form field values and attributes
     $('#nameInput').val(name);
     $('#roomsInput').val(maxRooms);
     $('#roomsInput').attr('max', maxRooms);
-    $('#guestsInput').val(maxPeople);
+    $('#guestsInput').val(2);
     $('#guestsInput').attr('max', maxPeople);
     $('#modalTitle').text(name);
     $("#displayPrice").text(formatedPrice());
@@ -658,11 +661,10 @@ document.dispatchEvent(event);
     var numGuests = document.getElementById("guestsInput").value;
     var numNights = document.getElementById("nightsInput").value;
 
-    var basePrice = 300;
     var cleaning = 300;
-    var guestPrice = 500;
+    var additioanlGuestPrice = (numGuests - 1) * 500;
 
-    return (basePrice + (numGuests * guestPrice) + cleaning) * numNights
+    return (basePrice + additioanlGuestPrice) * numNights + cleaning
   }
 
   function formatedPrice() {
