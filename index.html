@@ -259,13 +259,13 @@
       <h2 class="text-uppercase">Our homes </h2>
       <div class="row"> 
         <div class="col-md-6 col-sm-12   home mx-auto text-center">
-          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
-          <h2>St Martini Apartment</h2>
-          <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
-          <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
-          <p><i class="fa fa-bed"></i> 1 bedroom</p>
-          <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <button disabled type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Closed</button>
+            <img src="https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1" alt="Parklands, Cape Town">
+            <h2>One private room</h2>
+            <p>A cozy apartment next to swimming pool. Perfect for traveling single or couple, looking for a brief rest.</p>
+            <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
+            <p><i class="fa fa-bed"></i> 1 bedroom</p>
+            <p><i class="fa fa-users"></i> Up to 2 guests</p>
+            <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="250" data-max-people="2"  data-max-rooms="1" data-name="One private room" data-booking-type="Hour(s)">Hourly Booking</button>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
@@ -274,12 +274,21 @@
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
-          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-base-price="1200" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="Entire Pool House">Reserve now</button>
+          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-base-price="1200" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="Entire Pool House" data-booking-type="Day(s)">Daily booking</button>
           <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb.html" class="d-flex">
             <img class="icon" src="booking.png"/>
             &nbsp; Booking.com &nbsp;
             <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
+        </div>
+        <div class="col-md-6 col-sm-12   home mx-auto text-center">
+          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+          <h2>St Martini Apartment</h2>
+          <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
+          <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
+          <p><i class="fa fa-bed"></i> 1 bedroom</p>
+          <p><i class="fa fa-users"></i> Up to 2 guests</p>
+          <button disabled type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Closed</button>
         </div>
         <div class="map">
           <!-- Map code goes here -->
@@ -367,7 +376,7 @@
 
             // Create a marker for the first location
             var marker1 = new google.maps.Marker({
-                title: "Entire Pool House",
+                title: "Blue Sanctuary Pool House",
                 position: {lat: -33.736033521997754, lng: 18.521339659176753},
                 map: map
             });
@@ -404,25 +413,6 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script>
-      $(document).ready(function() {
-        // Get the current date
-        const today = new Date();
-
-        // Add one day to the current date
-        const tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
-
-        // Format the date as YYYY-MM-DD for the input value
-        const year = tomorrow.getFullYear();
-        const month = (tomorrow.getMonth() + 1).toString().padStart(2, "0");
-        const day = tomorrow.getDate().toString().padStart(2, "0");
-        const formattedDate = `${year}-${month}-${day}`;
-
-        // Set the value of the date input to the next day's date
-        $("#dateInput").val(formattedDate);
-        $("#dateInput").attr("min", formattedDate);
-      });
-
       $(document).ready(function() {
 
         $('#modal-form').submit(function(e) {
@@ -508,11 +498,11 @@
               <input type="number" class="form-control" id="guestsInput" min="1" value="1" required>
             </div>
             <div class="form-group col-sm-4">
-              <label for="nightsInput">Nights</label>
-              <input type="number" class="form-control" id="nightsInput" min="1" value="1" required>
+              <label id="nightsInputLabel" for="nightsInput"></label>
+              <input id="nightsInput" type="number" class="form-control" min="1" value="1" required>
             </div>
             <div class="form-group col-sm-4">
-              <label for="dateInput">Checkin (prefered)</label>
+              <label for="dateInput">Date</label>
               <input type="date" class="form-control" id="dateInput" required>
             </div>
           </div>
@@ -581,16 +571,13 @@
       var numRooms = document.getElementById("roomsInput").value;
       var numGuests = document.getElementById("guestsInput").value;
       var numNights = document.getElementById("nightsInput").value;
-
-      var basePrice = 300;
-      var cleaning = 300;
-      var guestPrice = 500;
+      var typeLable = document.getElementById("nightsInputLabel").labelText;
 
       var paymentRequest = {
         amountInCents: price() * 100,
         currency: "ZAR",
         name: name,
-        description: "Payment for " + numNights + " nights at " + name,
+        description: "Payment for " + numNights + " " + typeLable + " at " + name,
         metadata: {
           rooms: numRooms,
           guests: numGuests,
@@ -610,13 +597,54 @@
       yoco.showPopup(paymentRequest);
     }
     
+    function setStartingDateTomorrow() {
+      // Get the current date
+      const today = new Date();
+
+      // Add one day to the current date
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+
+      // Format the date as YYYY-MM-DD for the input value
+      const year = tomorrow.getFullYear();
+      const month = (tomorrow.getMonth() + 1).toString().padStart(2, "0");
+      const day = tomorrow.getDate().toString().padStart(2, "0");
+      const formattedDate = `${year}-${month}-${day}`;
+
+      // Set the value of the date input to the next day's date
+      $("#dateInput").val(formattedDate);
+      $("#dateInput").attr("min", formattedDate);
+    }
+    
+    function setStartingDateToday() {
+      // Get the current date
+      const today = new Date();
+
+      // Format the date as YYYY-MM-DD for the input value
+      const year = today.getFullYear();
+      const month = (today.getMonth() + 1).toString().padStart(2, "0");
+      const day = today.getDate().toString().padStart(2, "0");
+      const formattedDate = `${year}-${month}-${day}`;
+
+      // Set the value of the date input to the next day's date
+      $("#dateInput").val(formattedDate );
+      $("#dateInput").attr("min", formattedDate);
+    }
+    
   // Set form values when modal is opened
   $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var maxRooms = button.data('max-rooms'); // Extract info from data-* attributes
-    var maxPeople = button.data('max-people')
+    var maxPeople = button.data('max-people');
     var name = button.data('name');
-    basePrice = button.data('base-price')
+    var bookingType = button.data('booking-type');
+    basePrice = button.data('base-price');
+    
+    if (bookingType.includes("Hour(s)")) {
+        setStartingDateToday()
+    } else {
+        setStartingDateTomorrow()
+    }
 
     // Set form field values and attributes
     $('#nameInput').val(name);
@@ -625,6 +653,7 @@
     $('#guestsInput').val(2);
     $('#guestsInput').attr('max', maxPeople);
     $('#modalTitle').text(name);
+    $("#nightsInputLabel").text(bookingType);
     $("#displayPrice").text(formatedPrice());
   });
 
@@ -647,10 +676,18 @@
   }
 
   function price() {
+    var bookingType = document.getElementById('nightsInputLabel').innerText;
+    
+    console.log(bookingType);
+    
     //var numRooms = document.getElementById("roomsInput").value;
     var numGuests = document.getElementById("guestsInput").value;
     var numNights = document.getElementById("nightsInput").value;
 
+    if (bookingType.includes("Hour(s)")) {
+        return basePrice * numNights
+    }
+    
     var cleaning = 300;
     var additioanlGuestPrice = (numGuests - 1) * 500;
 
