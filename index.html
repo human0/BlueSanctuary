@@ -288,7 +288,7 @@
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <button disabled type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Closed</button>
+          <button type="button" class="btn btn-secondary btn-lg btn-block disabled" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Closed</button>
         </div>
         <div class="map">
           <!-- Map code goes here -->
@@ -352,7 +352,6 @@
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-paper-plane"></i> Send</button>
-                  <p>support@bluesanctuary.co.za</p>
                 </div>
 
               </form>
@@ -429,7 +428,7 @@
           var message = $('#message').val();
           $.ajax({
             type: 'POST',
-            url: 'https://formspree.io/f/xrgvrdbb',
+            url: 'https://formspree.io/f/mnqkywby',
             dataType : "json",
             data: {
               title: $('#title').val(),
@@ -476,7 +475,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5  class="modal-title text-center" id="modalTitle">name</h5>
+        <h3  class="modal-title text-center" id="modalTitle">name</h3>
         <h4 class="text-center greenColor" id="displayPrice"></h4>
       </div>
 
@@ -487,7 +486,7 @@
             <input type="text" class="form-control" id="nameInput">
           </div>
           <div class="row">
-            <h5 class="text-center lightGreyColor">Reservation details</h5> 
+            <h4 class="text-center lightGreyColor">Reservation details</h4>
             <hr>
             <div class="form-group col-md-3" disabled="true" hidden="true" aria-hidden="true">
               <label for="roomsInput">Rooms</label>
@@ -508,7 +507,7 @@
           </div>
           <div class="row">
             <hr>
-            <h5 class="text-center lightGreyColor">Card holder details</h5> 
+            <h4 class="text-center lightGreyColor">Card holder details</h4>
             <hr>
             <div class="form-group col-sm-6">
               <label for="customerName">Name</label>
@@ -589,7 +588,8 @@
           }
         },
         callback: function(response) {
-          console.log(response);
+            console.log("response:");
+            console.log(response);
           // handle payment response here
         }
       };
