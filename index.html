@@ -265,34 +265,19 @@
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
           <p><i class="fa fa-bed"></i> 1 bedroom</p>
           <p><i class="fa fa-users"></i> Up to 2 guests</p>
-          <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Reserve now</button>
-          <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/flat-in-gardens-mountain-view">
-            <img class="icon" src="booking.png"/> 
-            &nbsp; Booking.com &nbsp;
-            <span class="glyphicon glyphicon-share-alt push-right"></span>
-          </a>
-          <a  class="btn-warning btn-sm btn-block" href="https://airbnb.com/h/bluesanctuarygardens">
-            <img class="icon" src="airbnb.png"/> 
-            &nbsp; AirBnb &nbsp;
-            <span class="glyphicon glyphicon-share-alt push-right"></span>
-          </a>
+          <button disabled type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="750" data-max-people="2"  data-max-rooms="1" data-name="St Martini Apartment">Closed</button>
         </div>
         <div class="col-md-6 col-sm-12 home mx-auto text-center">
           <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
-          <h2>x3 Room Pool House</h2>
+          <h2>Entire Pool House</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
           <p><i class="fa fa-bed"></i> 3 bedrooms</p>
           <p><i class="fa fa-users"></i> Up to 6 guests</p>
-          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-base-price="1200" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="x3 Room Pool House">Reserve now</button>
-          <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb" class="d-flex">
-            <img class="icon" src="booking.png"/> 
+          <button type="button" class="btn btn-success btn-outline btn-lg btn-block" data-toggle="modal" data-base-price="1200" data-target="#myModal" data-max-people="6" data-max-rooms="3" data-name="Entire Pool House">Reserve now</button>
+          <a class="btn-primary btn-sm btn-block" href="https://www.booking.com/hotel/za/blue-santuary-airbnb.html" class="d-flex">
+            <img class="icon" src="booking.png"/>
             &nbsp; Booking.com &nbsp;
-            <span class="glyphicon glyphicon-share-alt push-right"></span>
-          </a>
-          <a class="btn-warning btn-sm btn-block" href="https://airbnb.com/h/blue-sanctuary" class="d-flex">
-            <img class="icon" src="airbnb.png"/> 
-            &nbsp; AirBnb &nbsp;
             <span class="glyphicon glyphicon-share-alt push-right"></span>
           </a>
         </div>
@@ -382,7 +367,7 @@
 
             // Create a marker for the first location
             var marker1 = new google.maps.Marker({
-                title: "x3 Room Pool House",
+                title: "Entire Pool House",
                 position: {lat: -33.736033521997754, lng: 18.521339659176753},
                 map: map
             });
@@ -563,63 +548,68 @@
   </div>
 </div>
 <script>
-function loadYocoSDK(callback) {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = 'https://js.yoco.com/sdk/v1/yoco-sdk-web.js';
-  script.onload = callback;
-  document.getElementsByTagName('head')[0].appendChild(script);
-}
+    var basePrice = 1000;
+    var yoco
+    
+    function loadYocoSDK(callback) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = 'https://js.yoco.com/sdk/v1/yoco-sdk-web.js';
+      script.onload = function () {
+        console.log('Yoco SDK script loaded');
+        callback();
+      };
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
 
-loadYocoSDK(function() {
-    var yoco = new window.YocoSDK({
-      publicKey: 'pk_live_0996b0ab6604zGJ170f4',
+    loadYocoSDK(function () {
+      console.log('Yoco SDK loaded');
+      yoco = new window.YocoSDK({
+        publicKey: 'pk_live_0996b0ab6604zGJ170f4',
+      });
+
+      var event = new Event('yocoSdkReady');
+      document.dispatchEvent(event);
     });
+    
+    function showPaymentPopup() {
+      var name = document.getElementById("nameInput").value;
+      var clientName = document.getElementById("customerNameInput").value;
+      var clientSurname = document.getElementById("customerSurnameInput").value;
+      var clientEmail = document.getElementById("customerEmailInput").value;
+      var numRooms = document.getElementById("roomsInput").value;
+      var numGuests = document.getElementById("guestsInput").value;
+      var numNights = document.getElementById("nightsInput").value;
 
-  function showPaymentPopup() {
-    var name = document.getElementById("nameInput").value;
-    var clientName = document.getElementById("customerNameInput").value;
-    var clientSurname = document.getElementById("customerSurnameInput").value;
-    var clientEmail = document.getElementById("customerEmailInput").value;
-    var numRooms = document.getElementById("roomsInput").value;
-    var numGuests = document.getElementById("guestsInput").value;
-    var numNights = document.getElementById("nightsInput").value;
+      var basePrice = 300;
+      var cleaning = 300;
+      var guestPrice = 500;
 
-    var basePrice = 300;
-    var cleaning = 300;
-    var guestPrice = 500;
-
-    var paymentRequest = {
-      amountInCents: price() * 100,
-      currency: "ZAR",
-      name: name,
-      description: "Payment for " + numNights + " nights at " + name,
-      metadata: {
-        rooms: numRooms,
-        guests: numGuests,
-        nights: numNights,
-        customer: {
-          firstName: clientName,
-          surname: clientSurname,
-          email: clientEmail,
+      var paymentRequest = {
+        amountInCents: price() * 100,
+        currency: "ZAR",
+        name: name,
+        description: "Payment for " + numNights + " nights at " + name,
+        metadata: {
+          rooms: numRooms,
+          guests: numGuests,
+          nights: numNights,
+          customer: {
+            firstName: clientName,
+            surname: clientSurname,
+            email: clientEmail,
+          }
+        },
+        callback: function(response) {
+          console.log(response);
+          // handle payment response here
         }
-      },
-      callback: function(response) {
-        console.log(response);
-        // handle payment response here
-      }
-    };
+      };
 
-    yoco.showPopup(paymentRequest);
-  }
-});
-
-var event = new Event('yocoSdkReady');
-document.dispatchEvent(event);
-
-  var basePrice = 1000;
-
+      yoco.showPopup(paymentRequest);
+    }
+    
   // Set form values when modal is opened
   $('#myModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
