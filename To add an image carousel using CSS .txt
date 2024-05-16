@@ -50,6 +50,3 @@ Here's what the new code does:
 3. It adds the necessary markup for the carousel indicators and navigation controls.
 4. It also adds the `data-ride="carousel"` attribute to the main `<div>` with the class `carousel` to enable the carousel functionality.
 
-Make sure you have the Bootstrap CSS and JavaScript files included in your HTML file for the carousel to work correctly. The CSS file provides the necessary styles, and the JavaScript file provides the functionality for the carousel.
-
-Replace `https://example.com/image2.jpg` and `https://example.com/image3.jpg` with the actual URLs of the images you want to include in the carousel.
