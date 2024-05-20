@@ -178,6 +178,107 @@
       .push-right {
         float: right;
       }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      .modal-content, #modalCaption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Next & Previous Buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Caption */
+      #modalCaption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      .carousel {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+      }
+      .carousel-image {
+          display: none;
+          width: 100%;
+          height: auto;
+      }
+
+      .carousel-image:first-child {
+          display: block;
+      }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -252,7 +353,8 @@
       <div class="row">
         <h2 class="text-uppercase">About Us</h2>
         <div class="text-center"></div>
-          <img src="safetyIcon.png" class="mx-auto d-block" alt="Safety Icon" width="120px">
+
+          <img src="EM1.png" class="mx-auto d-block" alt="Safety Icon" width="120px">
           <p class="text-center">Welcome to Blue Sanctuary, where rest and safety are our top priority. Our airbnb is designed to provide a serene and tranquil environment for tourists and travelers alike. We understand that your vacation should be a time to unwind and recharge, and we have gone to great lengths to ensure that our space is both welcoming and peaceful. From cozy furnishings to top-of-the-line safety features, we are dedicated to making your stay with us a restful and rejuvenating experience. So come and make yourself at home at Blue Sanctuary, your safe haven away from home.</p>
         </div>
     </div>
@@ -263,16 +365,25 @@
       <h2 class="text-uppercase">Our homes </h2>
       <div class="row"> 
         <div class="col-md-12 col-lg-6 home mx-auto text-center">
-            <img src="https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1" alt="Parklands, Cape Town">
+          <div class="carousel">
+            <img id="slideImage1" class="carousel-image" src="https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1" alt="Parklands, Cape Town">
+            <img id="slideImage2" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+            <img id="slideImage3" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+          </div>
             <h2>One private room</h2>
             <p>A cozy apartment next to swimming pool. Perfect for traveling single or couple, looking for a brief rest.</p>
             <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
             <p><i class="fa fa-bed"></i> 1 bedroom</p>
             <p><i class="fa fa-users"></i> Up to 2 guests</p>
             <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" data-base-price="250" data-max-people="2"  data-max-rooms="1" data-name="One private room" data-booking-type="Hour(s)">Hourly Booking</button>
+
         </div>
         <div class="col-md-12 col-lg-6 home mx-auto text-center">
-          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+          <div class="carousel">
+            <img id="slideImage4" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+            <img id="slideImage5" class="carousel-image" src="https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1" alt="Parklands, Cape Town">
+            <img id="slideImage6" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+          </div>
           <h2>Entire Pool House</h2>
           <p>A spacious house with a pool and stunning views of the surrounding mountains. Great for families or groups.</p>
           <p><i class="fa fa-map-marker"></i> Parklands, Cape Town</p>
@@ -286,7 +397,11 @@
           </a>
         </div>
         <div class="col-md-12 col-lg-6   home mx-auto text-center">
-          <img src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+          <div class="carousel">
+            <img id="slideImage7" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240" alt="Apartment at Gardens, Cape Town">
+            <img id="slideImage8" class="carousel-image" src="https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240" alt="House with a Pool at 35 Fernwood Close, Parklands, Cape Town">
+            <img id="slideImage9" class="carousel-image" src="https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1" alt="Parklands, Cape Town">
+          </div>
           <h2>St Martini Apartment</h2>
           <p>A cozy apartment located in the heart of Gardens, Cape Town. Perfect for couples or solo travelers.</p>
           <p><i class="fa fa-map-marker"></i> Gardens, Cape Town</p>
@@ -829,6 +944,170 @@
   </div>
 </div>
 
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+  <img class="modal-content" id="modalImage">
+  <div id="modalCaption"></div>
+</div>
+<script>
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var captionText = document.getElementById("modalCaption");
+
+  // Get all image elements in the carousel
+  var carouselImages = document.querySelectorAll(".carousel-image");
+
+  // Add click event listener to each image
+  for (var i = 0; i < carouselImages.length; i++) {
+    carouselImages[i].addEventListener("click", function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    });
+  }
+
+  // Click on the close button or outside the modal to close it
+  var closeModal = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      closeModal();
+    }
+  }
+</script>
+<script>
+  function changeSlide(direction) {
+    let currentIndex = Array.from(carouselImages).findIndex(img => img.src === modalImg.src);
+    currentIndex = (currentIndex + direction + carouselImages.length) % carouselImages.length;
+    modalImg.src = carouselImages[currentIndex].src;
+    captionText.innerHTML = carouselImages[currentIndex].alt;
+  }
+</script>
+<script>
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowLeft") {
+      changeSlide(-1);
+    } else if (event.key === "ArrowRight") {
+      changeSlide(1);
+    }
+  });
+</script>
+
+<script>
+  // Carousel 1
+  let carousel1Index = 0;
+  const carousel1Images = [
+    'https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1',
+    'https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240',
+    'https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240' 
+  ];
+
+  // Carousel 2
+  let carousel2Index = 0;
+  const carousel2Images = [
+    'https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1',
+    'https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240',
+    'https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240'
+  ];
+
+  // Carousel 3
+  let carousel3Index = 0;
+  const carousel3Images = [
+    'https://a0.muscache.com/im/pictures/miso/Hosting-831222011142737017/original/ac90d1ad-1c25-4729-8f8a-78aef7b0f7d5.jpeg?im_w=240',
+    'https://a0.muscache.com/im/pictures/miso/Hosting-50219412/original/5b77d730-a7e9-4a25-a7be-d8d90dbcefbb.jpeg?im_w=240',
+    'https://cf2.bstatic.com/xdata/images/hotel/max1280x900/490329940.jpg?k=aa1015d90b141cc2d61c12101942772792ffb65622be1bf353f962a5a5c4a32b&o=&hp=1'
+  ];
+
+  // Get modal elements
+  const modalImage = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+
+  // Function to update modal with carousel images
+  function updateModal(index, images) {
+    modalImage.src = images[index];
+    // modalCaption.textContent = `Image ${index + 1} of ${images.length}`;
+  }
+
+  // Event listeners for previous and next buttons
+  prevButton.addEventListener('click', () => {
+    let carouselIndex, carouselImages;
+
+    if (carousel1Index === 0 && carousel2Index === 0 && carousel3Index === 0) {
+      // Handle wraparound for all carousels at the beginning
+      carousel1Index = carousel1Images.length - 1;
+      carousel2Index = carousel2Images.length - 1;
+      carousel3Index = carousel3Images.length - 1;
+    } else if (carousel1Index === 0) {
+      // Handle wraparound for carousel 1
+      carousel1Index = carousel1Images.length - 1;
+      carouselIndex = carousel2Index;
+      carouselImages = carousel2Images;
+    } else if (carousel2Index === 0) {
+      // Handle wraparound for carousel 2
+      carousel2Index = carousel2Images.length - 1;
+      carouselIndex = carousel3Index;
+      carouselImages = carousel3Images;
+    } else if (carousel3Index === 0) {
+      // Handle wraparound for carousel 3
+      carousel3Index = carousel3Images.length - 1;
+      carouselIndex = carousel1Index;
+      carouselImages = carousel1Images;
+    } else {
+      carousel1Index--;
+      carousel2Index--;
+      carousel3Index--;
+      carouselIndex = carousel1Index;
+      carouselImages = carousel1Images;
+    }
+
+    updateModal(carouselIndex, carouselImages);
+  });
+
+  nextButton.addEventListener('click', () => {
+    let carouselIndex, carouselImages;
+
+    if (carousel1Index === carousel1Images.length - 1 &&
+        carousel2Index === carousel2Images.length - 1 &&
+        carousel3Index === carousel3Images.length - 1) {
+      // Handle wraparound for all carousels at the end
+      carousel1Index = 0;
+      carousel2Index = 0;
+      carousel3Index = 0;
+    } else if (carousel1Index === carousel1Images.length - 1) {
+      // Handle wraparound for carousel 1
+      carousel1Index = 0;
+      carouselIndex = carousel2Index;
+      carouselImages = carousel2Images;
+    } else if (carousel2Index === carousel2Images.length - 1) {
+      // Handle wraparound for carousel 2
+      carousel2Index = 0;
+      carouselIndex = carousel3Index;
+      carouselImages = carousel3Images;
+    } else if (carousel3Index === carousel3Images.length - 1) {
+      // Handle wraparound for carousel 3
+      carousel3Index = 0;
+      carouselIndex = carousel1Index;
+      carouselImages = carousel1Images;
+    } else {
+      carousel1Index++;
+      carousel2Index++;
+      carousel3Index++;
+      carouselIndex = carousel1Index;
+      carouselImages = carousel1Images;
+    }
+
+    updateModal(carouselIndex, carouselImages);
+  });
+
+  // Initialize modal with first image of carousel 1
+  updateModal(carousel1Index, carousel1Images);
+</script>
   </body>
 </html>
 
