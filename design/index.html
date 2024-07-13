@@ -5,38 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Exchange App Updated Mockups</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <div class="header"> 
+        <h1> Time Exchange App Concept</h1>
+        <h5> Financial freedom reimagined </h5>
+        <h5> Cashless community service exchange </h5>
+        <h5> In app credit monitoring </h5>
+    </div>
+
     <div class="container">
 
         <!-- Login/Signup Screen -->
         <div class="mockup">
-            <div class="header">
-                <div class="logo">TimeExchange</div>
-            </div>
-            <div class="toggle-container">
-                <div class="toggle-button active">Login</div>
-                <div class="toggle-button">Sign Up</div>
-            </div>
-            <input class="input-field" type="email" placeholder="Email">
-            <input class="input-field" type="password" placeholder="Password">
-            <div class="button">Login</div>
-            <div style="text-align: center; margin-bottom: 20px;">
-                <a href="#" style="color: #3498db; text-decoration: none;">Forgot Password?</a>
-            </div>
-            <div style="text-align: center;">
-                Or login with:
-            </div>
-            <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-                <div class="button" style="background-color: #3b5998;">Facebook</div>
-                <div class="button" style="background-color: #db4437;">Google</div>
+            <div class="background"></div>
+            <div class="content">
+                <div class="login-header">
+                    <h5 style="margin-bottom: 0;">Get start with</h5>
+                    <h3 style="margin-top: 0;">TIME EXCHANGE</h3>
+                    <h5><i>Financial freedom awaits</i></h5>
+                </div>
+                <div class="form-container">
+                    <div class="toggle-container">
+                        <button class="toggle-button active" id="loginBtn">Login</button>
+                        <button class="toggle-button" id="signupBtn">Sign Up</button>
+                    </div>
+                    <form id="loginForm">
+                        <input class="input-field" type="tel" placeholder="Email" required>
+                        <input class="input-field" type="text" placeholder="Password" required>
+                        <div class="button">Sign In</div>
+                    </form>
+                    <form id="signupForm" style="display: none;">
+                        <input class="input-field" type="tel" placeholder="User name" required>
+                        <input class="input-field" type="tel" placeholder="Email" required>
+                        <input class="input-field" type="text" placeholder="Password" required>
+                        <input class="input-field" type="text" placeholder="Confirm Password" required>
+                        <div class="button">Sign Up</div>
+                    </form>
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="social-login">
+                    <a href="#" class="social-btn">f</a>
+                    <a href="#" class="social-btn">G</a>
+                </div>
             </div>
         </div>
 
         <!-- Verification Screen -->
         <div class="mockup">
             <div class="header">
-                <div class="logo">User Verification</div>
+                <div class="logo">Verification</div>
             </div>
             <div class="section-title">ID Verification</div>
             <div class="file-upload">
@@ -57,7 +78,7 @@
         <!-- User Profile Screen -->
         <div class="mockup">
             <div class="header">
-                <div class="logo">User Profile</div>
+                <div class="logo">Profile</div>
             </div>
             <div class="profile-header">
                 <div class="profile-avatar" style="background-image: url('https://i.pravatar.cc/150?img=8')"></div>
@@ -81,32 +102,33 @@
                     <span>47 hours</span>
                 </div>
             </div>
-            <div class="section-title">Skills & Interests</div>
+            <div class="info-tip">
+                <div class="section-title">Skills & Interests<i class="fas fa-info-circle info-icon"></i></div>
+                <span class="tooltiptext">Each 24:00 hours exchanged unlocks a skill new tag!</span>
+            </div>
             <div class="skills-tags">
                 <div class="skill-tag">Programming</div>
                 <div class="skill-tag">Web Design</div>
                 <div class="skill-tag">Cooking</div>
-                <div class="skill-tag">Photography</div>
-                <div class="skill-tag">Language Exchange</div>
             </div>
-            <div class="section-title">About Me</div>
+            <div class="section-title">Bio</div>
             <p>Passionate software developer with a love for cooking and photography. Always eager to learn new skills and meet interesting people through time exchange!</p>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -114,20 +136,21 @@
         <!-- Updated Home/Dashboard Screen -->
         <div class="mockup">
             <div class="header">
-                <div class="logo">TimeExchange</div>
+                <div class="logo">Home</div>
             </div>
             <div class="credits">
                 Available Credits: 05:30
             </div>
-            <div class="section-title">Time Exchange Progress</div>
+            <div class="button">Request Service</div>
+            <div class="info-tip">
+                <div class="section-title">Reward Progress<i class="fas fa-info-circle info-icon"></i></div>
+                <span class="tooltiptext">18:00 hour/ 24:00 hours exchanged. 6:00 hours until next skill tag!</span>
+            </div>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
-            <div>18:00 / 24:00 hours exchanged</div>
-            <div>6:00 hours until next skill tag!</div>
-            <div class="button">Request Service</div>
-            <div class="section-title">Nearby Requests</div>
-            <div class="request-list">
+            <div class="section-title">Recommended Requests</div>
+            <div class="service-request-list">
                 <div class="request-item">
                     <div class="user-preview">
                         <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
@@ -147,27 +170,22 @@
                     <div>5 km away • 1 hr</div>
                 </div>
             </div>
-            <div class="button">View All Requests</div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -175,7 +193,7 @@
         <!-- Service Requests Screen -->
         <div class="mockup">
             <div class="header">
-                <div class="logo">Service Requests</div>
+                <div class="logo">Requests</div>
             </div>
             <div class="search-bar">
                 <div class="search-icon"></div>
@@ -219,24 +237,20 @@
             </div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -246,48 +260,39 @@
             <div class="header">
                 <div class="logo">Request Details</div>
             </div>
-            <div class="section-title">Gardening Help</div>
             <div class="user-preview">
                 <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
                 <div class="user-preview-name">Emma S.</div>
                 <div class="user-preview-rating">★ 4.8</div>
             </div>
+            <div class=""><b>Gardening Help</b></div>
             <div>Need help with pruning and planting new flowers.</div>
-            <div>Duration: 2 hours</div>
-            <div>Start: May 15, 2024 at 10:00 AM</div>
-            <div>Location: 2 km away</div>
+            <div>1.5 km away • 4 hrs </div>
+            <div><i>Starts on May 15, 2024 at 10:00 AM</i></div>
             <div class="section-title">Tags</div>
             <div>
                 <span class="tag">Gardening</span>
                 <span class="tag">Outdoor</span>
             </div>
-            <div class="section-title">Your Skills</div>
-            <div>
-                <span class="tag">Gardening</span>
-                <span class="tag">Landscaping</span>
-            </div>
-            <textarea class="input-field" placeholder="Why are you a good fit for this request? (optional)" style="height: 100px;"></textarea>
+            <div class="section-title">Motivation</div>
+            <textarea class="input-field" placeholder="Why are you a good fit for this request? (optional)" style="height: 50px;"></textarea>
             <div class="button">Apply for This Request</div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -364,27 +369,22 @@
                     </div>
                 </div>
             </div>
-
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -392,38 +392,38 @@
         <!-- Timer Screen -->
         <div class="mockup">
             <div class="header">
-                <div class="logo">Active Service</div>
+                <div class="logo">Time Exchange</div>
             </div>
             <div class="user-preview" style="justify-content: center; margin-bottom: 20px;">
                 <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=5')"></div>
-                <div class="user-preview-name">Sarah M.</div>
-                <div class="user-preview-rating">★ 4.8</div>
+                <div> <img class="nav-icon" width="20px" style="margin-right: 5px;" src="images/exchangeIcon.png"> </div>
+                <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=1')"></div>
             </div>
             <div class="section-title" style="text-align: center;">French Lessons</div>
             <div class="timer">01:23:45</div>
             <div class="timer-buttons">
-                <div class="timer-button">Pause</div>
-                <div class="timer-button">Stop</div>
+                <div class=""><i class="fas fa-pause"></i></div>
+                <div class=""><i class="fas fa-stop"></i></div>
             </div>
             <div class="section-title" style="text-align: center;">Estimated End: 14:30</div>
             <div class="section-title" style="text-align: center;">Credits Left: 01:36:15</div>
             <div class="emergency-button">Emergency Stop</div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -456,24 +456,20 @@
             <div class="button">Submit Review</div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/profileIcon.png"> </div>
                     Profile
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Messages
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
                     Requests
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
+                    Messages
                 </div>
             </div>
         </div>
@@ -517,64 +513,56 @@
             </div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
 
         <!-- Create Service Request Screen -->
         <div class="mockup">
-        <div class="header">
-            <div class="logo">Create Request</div>
-        </div>
-        <input class="input-field" type="text" placeholder="Title">
-        <textarea class="input-field" placeholder="Description" style="height: 100px;"></textarea>
-        <input class="input-field" type="text" placeholder="Tags (comma separated)">
-        <input class="input-field" type="number" placeholder="Estimated Duration (hours)">
-        <input class="input-field" type="datetime-local" placeholder="Start Date/Time">
-        <div class="section-title">Location Radius</div>
-        <input type="range" min="1" max="50" value="25" class="input-field">
-        <div>25 km</div>
-        <div class="button">Post Request</div>
-        <div class="bottom-nav">
-            <div class="nav-item">
-                <div class="nav-icon"></div>
-                Home
+            <div class="header">
+                <div class="logo">Create Request</div>
             </div>
-            <div class="nav-item">
-                <div class="nav-icon"></div>
-                Profile
+            <input class="input-field" type="text" placeholder="Title">
+            <textarea class="input-field" placeholder="Description" style="height: 100px;"></textarea>
+            <input class="input-field" type="text" placeholder="Tags (comma separated)">
+            <input class="input-field" type="number" placeholder="Estimated Duration (hours)">
+            <input class="input-field" type="datetime-local" placeholder="Start Date/Time">
+            <div class="section-title">Location Radius</div>
+            <input type="range" min="1" max="50" value="25" class="input-field">
+            <div>25 km</div>
+            <div class="button">Post Request</div>
+            <div class="bottom-nav">
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
+                    Home
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
+                    Messages
+                </div>
+                <div class="nav-item">
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
+                </div>
             </div>
-            <div class="nav-item">
-                <div class="nav-icon"></div>
-                Active
-            </div>
-            <div class="nav-item">
-                <div class="nav-icon"></div>
-                Messages
-            </div>
-            <div class="nav-item">
-                <div class="nav-icon"></div>
-                Requests
-            </div>
-        </div>
         </div>
 
         <!-- Service Request Detail Screen for owner -->
@@ -588,10 +576,10 @@
                 <div class="user-preview-name">Emma S.</div>
                 <div class="user-preview-rating">★ 4.8</div>
             </div>
+            <div class=""><b>Gardening Help</b></div>
             <div>Need help with pruning and planting new flowers.</div>
-            <div>Duration: 2 hours</div>
-            <div>Start: May 15, 2024 at 10:00 AM</div>
-            <div>Location: 2 km away</div>
+            <div>1.5 km away • 4 hrs </div>
+            <div><i>Starts on May 15, 2024 at 10:00 AM</i></div>
             <div class="section-title">Request skills</div>
             <div>
                 <span class="tag">Gardening</span>
@@ -609,7 +597,7 @@
                         <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=10')"></div>
                         <div class="user-preview-name">John D.</div>
                         <div class="user-preview-rating">★ 4.7</div>
-                        <div class="button" style="margin-bottom: 0; margin-left: 10px; margin-right: 0;">Confirm</div>
+                        <div class="button" style="margin-bottom: 0; margin-left: 10px;">Confirm</div>
                     </div>
                     
                 </div>
@@ -618,30 +606,26 @@
                         <div class="user-preview-avatar" style="background-image: url('https://i.pravatar.cc/150?img=11')"></div>
                         <div class="user-preview-name">Sarah M.</div>
                         <div class="user-preview-rating">★ 4.9</div>
-                        <div class="button float-right" style="margin-bottom: 0;  margin-left: 2px; margin-right: 0;">Confirm</div>
+                        <div class="button float-right" style="margin-bottom: 0;  margin-left: 1px;">Confirm</div>
                     </div>
                 </div>
             </div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
@@ -678,27 +662,24 @@
             <div class="button" style="background-color: #e74c3c;">Logout</div>
             <div class="bottom-nav">
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/homeIcon.png"> </div>
                     Home
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Profile
+                    <div> <img class="nav-icon" width="20px" src="images/exchangeIcon.png"> </div>
+                    Requests
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Active
-                </div>
-                <div class="nav-item">
-                    <div class="nav-icon"></div>
+                    <div> <img class="nav-icon" width="20px" src="images/messageIcon.png"> </div>
                     Messages
                 </div>
                 <div class="nav-item">
-                    <div class="nav-icon"></div>
-                    Requests
+                    <div> <img class="nav-icon" width="20px" src="images/settingIcon.png"> </div>
+                    Settings
                 </div>
             </div>
         </div>
+
     </div>
 
 
@@ -709,6 +690,27 @@
                 const content = header.nextElementSibling;
                 content.style.display = content.style.display === 'none' ? 'block' : 'none';
             });
+        });
+    </script>
+
+    <script>
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+        loginBtn.addEventListener('click', () => {
+            loginBtn.classList.add('active');
+            signupBtn.classList.remove('active');
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
         });
     </script>
 
